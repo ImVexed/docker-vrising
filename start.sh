@@ -11,9 +11,6 @@ fi
 if [ ! -z $GID ]; then
 	groupmod -g $GID docker 2>&1
 fi
-if [ -z $SERVERNAME ]; then
-	SERVERNAME="trueosiris-V"
-fi
 if [ -z $WORLDNAME ]; then
 	WORLDNAME="world1"
 fi
@@ -51,6 +48,6 @@ echo "Starting Xvfb"
 Xvfb :0 -screen 0 1024x768x16 &
 echo "Launching wine64 V Rising"
 echo " "
-DISPLAY=:0.0 wine64 /mnt/vrising/server/VRisingServer.exe -persistentDataPath $p -serverName "$SERVERNAME" -saveName "$WORLDNAME" -logFile "$p/VRisingServer.log" "$game_port" "$query_port" 2>&1
+DISPLAY=:0.0 wine64 /mnt/vrising/server/VRisingServer.exe -persistentDataPath $p -saveName "$WORLDNAME" -logFile "$p/VRisingServer.log" "$game_port" "$query_port" 2>&1
 /usr/bin/tail -f /mnt/vrising/persistentdata/VRisingServer.log
 
